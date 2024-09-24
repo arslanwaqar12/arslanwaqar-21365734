@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';  // import useEffect
 import PhoneList from './PhoneList.js';
 
 function Contact(props) {
-    const {contact, contacts, setContacts} = props;
+    const { contact, contacts, setContacts } = props;
     const [expanded, setExpanded] = useState(false);
     const [phones, setPhones] = useState([]);
 
@@ -21,7 +21,7 @@ function Contact(props) {
 
     async function doDelete(e) {
         e.stopPropagation();
-        
+
         const response = await fetch('http://localhost/api/contacts/' + contact.id, {
             method: 'DELETE',
         });
@@ -33,11 +33,12 @@ function Contact(props) {
         setContacts(newContacts);
     }
 
-	return (
-		<div key={contact.id} className='contact' onClick={(e) => setExpanded(!expanded)}>
+    return (
+        <div key={contact.id} className='contact' onClick={(e) => setExpanded(!expanded)}>
             <div className='title'>
                 <h3>{contact.name}</h3>
-                <button className='button red' onClick={doDelete}>Delete</button>
+                {/* Changed button label */}
+                <button className='button red' onClick={doDelete}>Delete Contact</button>
             </div>
 
             <div style={expandStyle}>
@@ -45,7 +46,8 @@ function Contact(props) {
                 <PhoneList phones={phones} setPhones={setPhones} contact={contact} />
             </div>
         </div>
-	);
+    );
 }
 
 export default Contact;
+
