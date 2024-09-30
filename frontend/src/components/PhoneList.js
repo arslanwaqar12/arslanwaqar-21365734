@@ -2,7 +2,7 @@ import Phone from './Phone.js';
 import NewPhone from './NewPhone.js';
 
 function PhoneList(props) {
-    const {contact, phones, setPhones} = props;
+    const { contact, phones, setPhones } = props;
 
 	return (
         <div className='phone-list'>
@@ -11,8 +11,8 @@ function PhoneList(props) {
             <table onClick={(e) => e.stopPropagation()}>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Number</th>
+                        <th>Phone Type</th> {/* Updated from Name */}
+                        <th>Phone Number</th> {/* Updated from Number */}
                         <th></th>
                     </tr>
                 </thead>
@@ -27,7 +27,7 @@ function PhoneList(props) {
                 </tbody>
             </table>
         </div>
-	);
+    );
 }
 
 export default PhoneList;

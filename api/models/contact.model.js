@@ -6,8 +6,13 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
         },
         name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false  
         },
+        address: {
+            type: Sequelize.STRING,
+            allowNull: false  
+        }
     });
   
     return Contact;

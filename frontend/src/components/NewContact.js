@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
 function NewContact(props) {
-    const {contacts, setContacts} = props;
+    const { contacts, setContacts } = props;
     const [name, setName] = useState('');
+    const [address, setAddress] = useState('');  // Add address state
 
     async function createContact(e) {
         e.preventDefault();
@@ -13,7 +14,8 @@ function NewContact(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                name
+                name,
+                address  // Include address in the request body
             })
         });
 
@@ -24,14 +26,26 @@ function NewContact(props) {
         }
 
         setName('');
+        setAddress('');  // Reset address input
     }
 
-	return (
+    return (
         <form className='new-contact' onSubmit={createContact}>
-            <input type='text' placeholder='Name' onChange={(e) => setName(e.target.value)} value={name}/>
+            <input 
+                type='text' 
+                placeholder='Name' 
+                onChange={(e) => setName(e.target.value)} 
+                value={name}
+            />
+            <input 
+                type='text' 
+                placeholder='Address' 
+                onChange={(e) => setAddress(e.target.value)} 
+                value={address}
+            />
             <button className='button green' type='submit'>Create Contact</button>
         </form>
-	);
+    );
 }
 
 export default NewContact;

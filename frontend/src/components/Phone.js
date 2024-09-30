@@ -15,8 +15,8 @@ function Phone(props) {
 
     return (
         <tr>
-            <td>{ phone.type }</td> {/* Change the label from phone.name to phone.type */}
-            <td>{ phone.number }</td>
+            <td>{ phone.phone_type }</td> {/* Use phone_type */}
+            <td>{ phone.phone_number }</td> {/* Use phone_number */}
             <td style={{ width: '14px' }}>
                 <button className="button red" onClick={deletePhone}>Delete</button>
             </td>

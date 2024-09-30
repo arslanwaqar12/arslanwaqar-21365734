@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 function NewPhone(props) {
     const { contact, phones, setPhones } = props;
-    const [number, setNumber] = useState('');
-    const [name, setName] = useState('');
+    const [phone_number, setPhoneNumber] = useState('');  // Use phone_number
+    const [phone_type, setPhoneType] = useState('');  // Use phone_type
 
     async function createPhone(e) {
         e.preventDefault();
@@ -14,8 +14,8 @@ function NewPhone(props) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                number,
-                name
+                phone_number,  // Use phone_number instead of number
+                phone_type  // Use phone_type instead of name
             })
         });
 
@@ -25,16 +25,16 @@ function NewPhone(props) {
             setPhones([...phones, data]);
         }
 
-        setNumber('');
-        setName('');
+        setPhoneNumber('');
+        setPhoneType('');
     }
 
     return (
         <form onSubmit={createPhone} onClick={(e) => e.stopPropagation()} className='new-phone'>
-            {/* Replacing input with a drop down selction */}
+            {/* Dropdown for phone type (Work, Personal, etc.) */}
             <select 
-                value={name} 
-                onChange={(e) => setName(e.target.value)}
+                value={phone_type} 
+                onChange={(e) => setPhoneType(e.target.value)}
             >
                 <option value="" disabled>Select Category</option>
                 <option value="Work">Work</option>
@@ -43,13 +43,14 @@ function NewPhone(props) {
                 <option value="Other">Other</option>
             </select>
 
+            {/* Input for phone number */}
             <input 
                 type='text' 
                 placeholder='Phone Number' 
-                onChange={(e) => setNumber(e.target.value)} 
-                value={number}
+                onChange={(e) => setPhoneNumber(e.target.value)} 
+                value={phone_number}
             />
-            {/* Replacing add button with person add name button */}
+            {/* Button label updated to include contact's name */}
             <button className='button green' type='submit'>
                 Add {contact.name}'s Phone
             </button>

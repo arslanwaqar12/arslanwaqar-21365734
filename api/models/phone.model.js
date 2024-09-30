@@ -5,18 +5,21 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
-            type: Sequelize.STRING
+        phone_type: {
+            type: Sequelize.STRING,  // Change name to phone_type
+            allowNull: false  
         },
-        number: {
-            type: Sequelize.STRING
+        phone_number: {
+            type: Sequelize.STRING,  // Update number to phone_number 
+            allowNull: false  
         },
         contactId: {
             type: Sequelize.INTEGER,
             references: {
-                model: 'contacts',
+                model: 'contacts',  // Ensure this references the contacts table correctly
                 key: 'id',
-            }
+            },
+            onDelete: 'CASCADE'  
         }
     });
   

@@ -34,10 +34,10 @@ function Contact(props) {
     }
 
     return (
-        <div key={contact.id} className='contact' onClick={(e) => setExpanded(!expanded)}>
+        <div key={contact.id} className='contact' onClick={() => setExpanded(!expanded)}>
             <div className='title'>
                 <h3>{contact.name}</h3>
-                {/* Changed button label */}
+                <p>{contact.address}</p> {/* Display the address */}
                 <button className='button red' onClick={doDelete}>Delete Contact</button>
             </div>
 
@@ -50,4 +50,3 @@ function Contact(props) {
 }
 
 export default Contact;
-
